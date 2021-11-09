@@ -15,7 +15,7 @@ class writeToFile
 
         int data=0;
 
-        File file = new File( "data1.txt" );
+        File file = new File( "data.txt" );
 
         PrintStream print = new PrintStream( file );
 
