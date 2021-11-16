@@ -1,30 +1,28 @@
-class primeTest2
-{
-    public static void main (String[] args)
-    {
-       long testNumber = 1;
+class primeTest2 {
 
-       while (testNumber < 100) {
+    public static void main(String[] args) {
+        long testNumber = 1;
+        int rootCounter = 1;
 
-           double root = Math.sqrt(testNumber);
-           long wholeRoot = Math.round(root);
-           long i; // counter
-           boolean isPrime = false;
+        while (testNumber < 1000) {
 
-           for (i = 2;/*add root opt*/testNumber % i == 1; i++) {
-               if (i >= wholeRoot) {
-                   System.out.println(testNumber);
-                   break;
-               }
-               else {
-                    break;
-               }
-           }
-           testNumber = testNumber + 2;
+            double root = Math.sqrt(testNumber);
+            long wholeRoot = Math.round(root);
+            long i = 3; // counter
+            boolean isPrime = true;
 
-               // TODO if (num % i) are true
-               // if num % i is 0 cannot be prime restart until reaching root of num
-               // if all are not 0 then prime else break
-       }
+            for (i=3;i<=wholeRoot;i++) {
+                if (testNumber % i == 0) {
+                    System.out.println(testNumber + "is not prime");
+                    isPrime = false;
+                }
+            }
+
+
+            testNumber+=2;
+                // TODO if (num % i) are true
+                // if num % i is 0 cannot be prime restart until reaching root of num
+                // if all are not 0 then prime else break
+        }
     }
 }
