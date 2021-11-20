@@ -4,25 +4,25 @@ class primeSieve
 {
     public static void main (String[] args)
     {
-        boolean[] primeArray = new boolean[10_000_000];
+        boolean[] primeArray = new boolean[100];
         int arrayCounter = 0;
         int multiplyingNum = 2;
         int multiplyingCounter = 2;
         int arrayNumToFalse;
 
-        while (arrayCounter != 10_000_000) { // generates an array 10mil long and sets all to false
+        while (arrayCounter != primeArray.length) { // generates an array 10mil long and sets all to false
             primeArray[arrayCounter] = true;
             arrayCounter+=2;
         }
 
-        while (multiplyingNum <= 10_000_000) {
+        while (multiplyingNum <= primeArray.length) {
             arrayNumToFalse = multiplyingNum * multiplyingCounter;
 
             if (!primeArray[arrayNumToFalse]) {
                 multiplyingNum++;
             }
             else {
-                while (multiplyingCounter < 10_000_000) {
+                while (multiplyingCounter < primeArray.length) {
                     primeArray[arrayNumToFalse] = false;
                     multiplyingCounter++;
                     arrayNumToFalse = multiplyingNum * multiplyingCounter;
