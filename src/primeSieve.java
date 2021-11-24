@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-
 class primeSieve
 {
     public static void main (String[] args)
@@ -15,22 +13,19 @@ class primeSieve
             arrayCounter+=2;
         }
 
-        while (multiplyingNum <= primeArray.length) {
+        while (multiplyingNum <= (primeArray.length - 1)) {
             arrayNumToFalse = multiplyingNum * multiplyingCounter;
 
-            if (!primeArray[arrayNumToFalse]) {
-                multiplyingNum++;
-            }
-            else {
-                while (multiplyingCounter < primeArray.length) {
+            if (primeArray[arrayNumToFalse]) {
+                while (multiplyingCounter < (primeArray.length - 1)) {
                     primeArray[arrayNumToFalse] = false;
                     multiplyingCounter++;
                     arrayNumToFalse = multiplyingNum * multiplyingCounter;
                 }
-                multiplyingNum++;
             }
+            multiplyingNum++;
         }
-        System.out.println(primeArray[366_402]);
+        System.out.println(primeArray[52]);
         // done
     }
 }
