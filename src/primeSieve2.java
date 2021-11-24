@@ -22,13 +22,14 @@ class primeSieve2
 
         while (arrayNum < Math.sqrt(primeArray.length)) {
 
-            while (arrayNumToFalse < (primeArray.length - arrayNum)) {
-                arrayCounter++;
-                arrayNumToFalse = arrayNum * arrayCounter;
-                primeArray[arrayNumToFalse] = false;
-                //System.out.println("Increasing array counter");
+            if (primeArray[arrayNum]) {
+                while (arrayNumToFalse < (primeArray.length - arrayNum)) {
+                    arrayCounter++;
+                    arrayNumToFalse = arrayNum * arrayCounter;
+                    primeArray[arrayNumToFalse] = false;
+                    //System.out.println("Increasing array counter");
+                }
             }
-
             arrayNum++;
             arrayCounter = 1;
             arrayNumToFalse = arrayNum * arrayCounter;
