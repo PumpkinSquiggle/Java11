@@ -1,8 +1,12 @@
+import java.math.*;
+import java.util.Arrays;
+
 class primeSieve2
 {
     public static void main (String[] args)
     {
         boolean[] primeArray = new boolean[10_000_000];
+        Arrays.fill(primeArray, Boolean.TRUE);
         int arrayCounter = 0;
         int arrayNumToFalse = 0;
         int arrayNum = 2; // (arrayCounter * arrayNum = arrayNumToFalse)
@@ -12,23 +16,11 @@ class primeSieve2
         primeArray[1] = false;
         primeArray[0] = false;
 
-        while (arrayCounter != primeArray.length) { // generates an array 10mil long and sets all to true
-            primeArray[arrayCounter] = true;
-            arrayCounter++;
-        }
 
         System.out.println("done creating array, starting logic");
         arrayCounter = 1;
 
-        while (arrayNum < primeArray.length) {
-
-
-            if (primeArray[arrayNumToFalse] == true) {
-                System.out.println("Can skip # " + arrayNum);
-                arrayNum++;
-                continue;
-            }
-
+        while (arrayNum < Math.sqrt(primeArray.length)) {
 
             while (arrayNumToFalse < (primeArray.length - arrayNum)) {
                 arrayCounter++;
@@ -36,22 +28,14 @@ class primeSieve2
                 primeArray[arrayNumToFalse] = false;
                 //System.out.println("Increasing array counter");
             }
+
             arrayNum++;
             arrayCounter = 1;
             arrayNumToFalse = arrayNum * arrayCounter;
-            //System.out.println("Increasing array num");
         }
 
         primeArray[1] = false;
         primeArray[0] = false;
-
-        System.out.println("prints array");
-
-        arrayCounter = 0;
-        while (primeArray.length - 1 >= arrayCounter) {
-            System.out.println((arrayCounter) + " - " + primeArray[arrayCounter]);
-            arrayCounter++;
-        }
 
         System.out.println("Prints primes");
 
