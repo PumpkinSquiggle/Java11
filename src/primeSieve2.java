@@ -7,11 +7,12 @@ class primeSieve2
     {
         boolean[] primeArray = new boolean[10_000_000];
         Arrays.fill(primeArray, Boolean.TRUE);
-        int arrayCounter = 0;
+        int arrayCounter;
         int arrayNumToFalse = 0;
         int arrayNum = 2; // (arrayCounter * arrayNum = arrayNumToFalse)
         int testCounter = 0;
         double startTime = System.nanoTime();
+        int[] isPrime = new int[664_579];
 
         primeArray[1] = false;
         primeArray[0] = false;
@@ -27,7 +28,6 @@ class primeSieve2
                     arrayCounter++;
                     arrayNumToFalse = arrayNum * arrayCounter;
                     primeArray[arrayNumToFalse] = false;
-                    //System.out.println("Increasing array counter");
                 }
             }
             arrayNum++;
@@ -43,11 +43,14 @@ class primeSieve2
         arrayCounter = 0;
         while (arrayCounter <= primeArray.length - 1) {
             if (primeArray[arrayCounter]) {
-                System.out.println(arrayCounter + " is prime");
+                isPrime[testCounter] = arrayCounter;
                 testCounter++;
             }
             arrayCounter++;
         }
+
+        System.out.println(Arrays.toString(isPrime));
+
         double timeRunning = (java.lang.System.nanoTime() - startTime) / 1_000_000_000;
         System.out.println("has been running for " + timeRunning + " seconds");
         System.out.println("There are " + testCounter + " primes in " + primeArray.length);
